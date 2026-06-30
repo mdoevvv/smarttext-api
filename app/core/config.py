@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     anthropic_api_key: str = ""
     model_name: str = "llama-3.3-70b-versatile"
     max_input_chars: int = 8000
+    
 
 settings = Settings()
 

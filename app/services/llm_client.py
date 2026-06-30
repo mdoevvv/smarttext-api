@@ -29,7 +29,11 @@ class LLMClient:
                     # For a summarize/QA API you want consistent, factual output, not creative variance
             )
         except Exception as e:
-            raise LLMError(f"LLM call failed: {e}") from e            
-        return response.choices[0].message.content
+            raise LLMError(f"LLM call failed: {e}") from e    
+        content = response.choices[0].message.content
+        
+        if content is None:
+            raise LLMError("Empty response from model")
+        return content        
         
 llm_client = LLMClient()
